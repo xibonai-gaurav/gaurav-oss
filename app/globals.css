@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 252 100% 70%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 311 100% 65%;
+    --accent-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 252 100% 70%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.bg-grid-white {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+}
+
+.text-gradient-alt {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-secondary to-accent;
+}
+
+.glow {
+  text-shadow: 0 0 10px rgba(120, 0, 255, 0.5), 0 0 20px rgba(120, 0, 255, 0.3);
+}
+
+.glow-accent {
+  text-shadow: 0 0 10px rgba(255, 0, 200, 0.5), 0 0 20px rgba(255, 0, 200, 0.3);
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 0 15px rgba(120, 0, 255, 0.5);
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  @apply bg-primary/30 text-white;
+}
+
+/* Animated underline effect for links */
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  @apply bg-gradient-to-r from-primary to-secondary;
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* AI-inspired text reveal effect */
+.ai-reveal {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-reveal::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(120, 0, 255, 0.2), transparent);
+  animation: ai-reveal-scan 2s ease-in-out infinite;
+}
+
+@keyframes ai-reveal-scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Terminal-style text animation */
+.terminal-text {
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: terminal-typing 3.5s steps(40, end), terminal-blink 0.75s step-end infinite;
+}
+
+@keyframes terminal-typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes terminal-blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+/* Neural network background pattern */
+.neural-bg {
+  background-image: radial-gradient(circle at 25px 25px, rgba(120, 0, 255, 0.15) 2%, transparent 0%),
+    radial-gradient(circle at 75px 75px, rgba(0, 200, 255, 0.1) 2%, transparent 0%);
+  background-size: 100px 100px;
+}
+
+/* Data flow animation */
+.data-flow {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-flow::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    transparent,
+    transparent,
+    transparent,
+    rgba(120, 0, 255, 0.1),
+    transparent,
+    transparent,
+    transparent
+  );
+  transform: rotate(30deg);
+  animation: data-flow-animation 8s linear infinite;
+}
+
+@keyframes data-flow-animation {
+  0% {
+    transform: translateY(-100%) translateX(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateY(100%) translateX(100%) rotate(30deg);
+  }
+}
+
+/* Adaptive content container */
+.adaptive-container {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adaptive-container:hover {
+  transform: scale(1.02);
+}
+
+/* AI processing indicator */
+.ai-processing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.ai-processing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(120, 0, 255, 0.7);
+  animation: ai-processing-animation 1.5s infinite ease-in-out;
+}
+
+.ai-processing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ai-processing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes ai-processing-animation {
+  0%,
+  100% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Neural network connection lines */
+.neural-connection {
+  stroke-dasharray: 5;
+  animation: dash 15s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+
+/* Thought stream styling */
+.thought-chain {
+  position: relative;
+}
+
+.thought-chain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(120, 0, 255, 0.3), rgba(0, 200, 255, 0.1));
+}
+
+.thought-node {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.thought-node:hover {
+  transform: translateX(5px);
+}
+
+.thought-node::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  background-color: rgba(120, 0, 255, 0.3);
+}
+
+/* Subtle hover effects */
+button,
+a {
+  transition: all 0.3s ease;
+}
+
+button:hover,
+a:hover {
+  text-shadow: 0 0 8px rgba(120, 0, 255, 0.5);
+}
+
+/* Subtle section transitions */
+section {
+  transition: opacity 0.5s ease;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgba(120, 0, 255, 0.5);
+  outline-offset: 2px;
+}
