@@ -49,7 +49,9 @@ export default function AskGaurav() {
   }
 
   useEffect(() => {
-    scrollToBottom()
+    if (messages.length > 0 || currentResponse) {
+      scrollToBottom()
+    }
   }, [messages, currentResponse])
 
   // Simulate AI thinking

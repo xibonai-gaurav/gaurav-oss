@@ -43,7 +43,9 @@ export default function AIAssistant({ preferences }: AIAssistantProps) {
 
   // Scroll to bottom when messages change
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    if (messages.length > 0 || currentResponse) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
   }, [messages, currentResponse])
 
   // Simulate typing effect for AI responses
