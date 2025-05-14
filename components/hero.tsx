@@ -17,7 +17,7 @@ export default function Hero() {
   const [currentTagline, setCurrentTagline] = useState(0)
   const [isTyping, setIsTyping] = useState(true)
   const [typedText, setTypedText] = useState("")
-  const fullText = "Welcome to Gaurav's World"
+  const fullText = "Welcome"
   const typingSpeed = 80 // ms per character
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
